@@ -8,7 +8,6 @@ var app = express();
 app.disable("x-powered-by");
 var fs = require("fs");
 var path = require("path");
-const bcrypt = require("bcrypt");
 
 
 

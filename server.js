@@ -11,10 +11,10 @@ var path = require("path");
 const bcrypt = require("bcrypt");
 
 
-bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+bcrypt.hash('passw0rd!', 13, (err, hash) => {
   console.log(hash);
-  bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
-    console.log(res);
+  bcrypt.compare('passw0rd!', hash, (err, res) => {
+  console.log(res);
   });
 });
 

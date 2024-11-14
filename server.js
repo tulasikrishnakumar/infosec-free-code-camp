@@ -10,12 +10,23 @@ var fs = require("fs");
 var path = require("path");
 const bcrypt = require("bcrypt");
 
+const storedHashedPassword = 'hashed_password_from_database';
+const userInputPassword = 'password_attempt_from_user';
 
-bcrypt.hash('passw0rd!', 13, (err, hash) => {
-  console.log(hash);
-  bcrypt.compare('passw0rd!', hash, (err, res) => {
-  console.log(res);
-  });
+bcrypt.compare(userInputPassword, storedHashedPassword, (err, result) => {
+    if (err) {
+        // Handle error
+        console.error('Error comparing passwords:', err);
+        return;
+    }
+
+if (result) {
+    // Passwords match, authentication successful
+    console.log('Passwords match! User authenticated.');
+} else {
+    // Passwords don't match, authentication failed
+    console.log('Passwords do not match! Authentication failed.');
+}
 });
 
 app.use(function (req, res, next) {
